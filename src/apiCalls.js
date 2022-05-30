@@ -1,5 +1,5 @@
 const apiKey = process.env.REACT_APP_API_KEY;
-console.log(apiKey)
+
 
 export const fetchConversion = async (from, to, amount) => {
   const url = `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=${from}&to=${to}&amount=${amount}`
