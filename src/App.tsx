@@ -4,9 +4,7 @@ import Form from './Form/Form';
 import './App.scss';
 
 const App: FC = () => {
-  const [source, setSource] = useState<string>('');
-  const [destination, setDestination] = useState<string>('');
-  const [converted, setConverted] = useState<number>(0);
+
   return (
     <div className="App">
       <div className="main">

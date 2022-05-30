@@ -5,16 +5,24 @@
   font-family: $main-font;
   font-weight: $main-font-weight;
   height: 100%;
+  background-color: tomato;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
 }
 
 .main {
-  background-color: tomato;
-  height: 100%;
+  border: 2px solid black;
+  height: 75%;
   display: flex;
+  width: 75%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+
 
 .card-wrapper {
   border: 3px solid white;
