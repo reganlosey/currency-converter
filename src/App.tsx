@@ -1,10 +1,14 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { IExchangeCard } from './Interfaces';
 import Form from './Form/Form';
+import { fetchConversion } from './apiCalls';
 import './App.scss';
 
 const App: FC = () => {
+  useEffect(() => {
+    fetchConversion('AUD', 'USD', '5')
 
+  })
   return (
     <div className="App">
       <div className="main">
