@@ -1,0 +1,14 @@
+### What'd ya do to the code, pal?
+
+### Did this break anything? 
+- [ ] No
+- [ ] Yes
+
+### Checklist:
+- [ ] If this code needs to be tested, all tests are passing
+- [ ] The code runs locally
+- [ ] There are comments where clarification/ organization is needed
+- [ ] The code is DRY. If it's not, I tried my best
+- [ ] I reviewed my code before pushing
+
+### What's next?
