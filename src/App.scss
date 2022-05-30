@@ -1,0 +1,21 @@
+@use "./sass/variables.scss" as *;
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,400&display=swap");
+
+.App {
+  font-family: $main-font;
+  font-weight: $main-font-weight;
+  height: 100%;
+}
+
+.main {
+  background-color: tomato;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-wrapper {
+  border: 3px solid white;
+}
