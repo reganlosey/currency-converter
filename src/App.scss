@@ -6,10 +6,10 @@
   font-weight: $main-font-weight;
   height: 100%;
   background-color: tomato;
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
 
 .main {
@@ -22,7 +22,39 @@
   align-items: center;
 }
 
+.exchange-form-wrapper {
+  // border: 2px solid black;
+  height: 75%;
+  display: flex;
+  width: 75%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.exchange-form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  border: 2px solid white;
+  height: 75%;
+  width: 75%;
+}
+
+.form-input {
+  width: 30%;
+}
+
+.convert-btn {
+  padding: 0.5rem 1.5rem;
+  border: 1px solid black;
+  background: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
 
 .card-wrapper {
   border: 3px solid white;
