@@ -1,7 +1,6 @@
 const apiKey = process.env.REACT_APP_API_KEY;
 
-
-export const fetchConversion = async (from, to, amount) => {
+export const fetchConversion = async (from: string, to: string, amount: number) => {
   const url = `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=${from}&to=${to}&amount=${amount}`
 
   const options = {
@@ -12,7 +11,7 @@ export const fetchConversion = async (from, to, amount) => {
     }
   };
 
-  const resp = await fetch(url, options)
+  const resp: Response = await fetch(url, options)
   const respJson = await resp.json()
   if (!resp.ok) {
     throw new Error(`Error: ${resp.status}`)

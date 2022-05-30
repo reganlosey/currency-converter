@@ -1,5 +1,6 @@
 import { FC, useState, ChangeEvent, MouseEvent } from 'react';
-import { IExchangeCard } from './Interfaces';
+import { IExchangeCard, IResponse } from './Interfaces';
+import ExchangeCard from './ExchangeCard/ExchangeCard';
 import { fetchConversion } from './apiCalls';
 import './App.scss';
 
@@ -7,7 +8,7 @@ const App: FC = () => {
   const [fromType, setFromType] = useState<string>('');
   const [toType, setToType] = useState<string>('');
   const [amount, setAmount] = useState<number>(0);
-  const [converted, setConverted] = useState<string>('');
+  const [conversionInfo, setConversionInfo] = useState<IResponse>();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -23,13 +24,13 @@ const App: FC = () => {
         break;
     }
   }
+
   const convertCurrency = async () => {
     const resp = await fetchConversion(fromType, toType, amount)
-    const respJson = await resp.json();
-    setConverted(respJson)
-    console.log(converted)
-
+    setConversionInfo(resp)
   }
+
+
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
     convertCurrency()
@@ -71,11 +72,7 @@ const App: FC = () => {
             <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>
           </form>
         </div>
-        <div className="card-wrapper">
-          <div className="exchange-card">
-            <h2>$amount in {'FROM'} currency is worth $amount in {'TO'} currency</h2>
-          </div>
-        </div>
+        {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : "Card goes here"}
       </div>
     </div>
   )
