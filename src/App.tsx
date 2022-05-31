@@ -29,7 +29,7 @@ const App: FC = () => {
   const convertCurrency = async () => {
     const resp = await fetchConversion(fromType, toType, amount)
     setConversionInfo(resp)
- 
+
   }
 
 
@@ -74,7 +74,9 @@ const App: FC = () => {
             <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>
           </form>
         </div>
-        {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo}/> : "Card goes here"}
+        <div className="exchange-card-wrapper">
+          {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : null}
+        </div>
       </div>
     </div>
   )

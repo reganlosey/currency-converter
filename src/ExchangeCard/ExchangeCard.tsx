@@ -22,7 +22,7 @@ const ExchangeCard = ({ conversionInfo }: Props) => {
     setConvertedAmount(rate_for_amount);
     setDestCurrencyName(currency_name);
     setBaseCurrencyName(conversionInfo.base_currency_name);
-  }, [])
+  }, [conversionInfo])
 
 
 
@@ -32,8 +32,8 @@ const ExchangeCard = ({ conversionInfo }: Props) => {
       <div className="conversion-info">
         {/* parseFloat("123.456").toFixed(2); */}
         <h2>{parseFloat(baseAmount).toFixed(2)} in <span className="converted-currency">{baseCurrencyName}</span> is equivalent to {parseFloat(convertedAmount).toFixed(2)} in <span className="converted-currency">{destCurrencyName}</span></h2>
-        <h2>The conversion rate from <span style={{ textTransform: "capitalize"}}>{baseCurrencyName}</span> to <span className="converted-currency">{destCurrencyName}</span> is {conversionRate}</h2>
-    </div>
+        <h2>The conversion rate from <span style={{ textTransform: "capitalize" }}>{baseCurrencyName}</span> to <span className="converted-currency">{destCurrencyName}</span> is {conversionRate}</h2>
+      </div>
 
     </div >
 

@@ -1,8 +1,12 @@
 @use "../sass/variables.scss" as *;
 
-.exchange-card {
+.exchange-card-wrapper {
   border: 2px solid white;
-  height: 50%;
+  min-height: 50%;
+  width:75%;
+}
+
+.exchange-card {
   padding: 1.5rem;
   width: 65%;
 }
