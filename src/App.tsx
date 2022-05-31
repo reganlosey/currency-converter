@@ -1,7 +1,7 @@
 import { FC, useState, ChangeEvent, MouseEvent } from 'react';
-import { IExchangeCard, IResponse } from './Interfaces';
+import { IExchangeCard, IResponse, IRespArray } from './Interfaces';
 import ExchangeCard from './ExchangeCard/ExchangeCard';
-import { fetchConversion } from './apiCalls';
+import { fetchAvailableCurrencies, fetchConversion } from './apiCalls';
 import './App.scss';
 
 const App: FC = () => {
@@ -9,16 +9,16 @@ const App: FC = () => {
   const [toType, setToType] = useState<string>('');
   const [amount, setAmount] = useState<number>(0);
   const [conversionInfo, setConversionInfo] = useState<IResponse>();
-  const [ratesInfo, setRatesInfo] = useState<object>();
+  const [currencyList, setCurrencyList] = useState<string[]>();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     switch (name) {
       case 'fromType':
-        setFromType(value)
+        setFromType(value.toUpperCase())
         break;
       case 'toType':
-        setToType(value)
+        setToType(value.toUpperCase())
         break;
       case "amount":
         setAmount(Number(value))
@@ -26,16 +26,26 @@ const App: FC = () => {
     }
   }
 
-  const convertCurrency = async () => {
-    const resp = await fetchConversion(fromType, toType, amount)
-    setConversionInfo(resp)
+  const getData = async () => {
+    const currencyDataResp = await fetchConversion(fromType, toType, amount)
+    setConversionInfo(currencyDataResp)
+    const availCurrenciesResp = await fetchAvailableCurrencies()
+    const currencies = Object.keys(availCurrenciesResp.currencies)
+    setCurrencyList(currencies)
+
+
+
+
+
+
+
 
   }
 
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
-    convertCurrency()
+    getData()
   }
 
 
