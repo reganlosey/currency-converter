@@ -14,7 +14,7 @@
 
 .main {
   border: 2px solid black;
-  height: 75%;
+  height: 85%;
   display: flex;
   width: 75%;
   flex-direction: column;
@@ -24,7 +24,6 @@
 
 .exchange-form-wrapper {
   // border: 2px solid black;
-  height: 75%;
   display: flex;
   width: 75%;
   flex-direction: column;
@@ -39,8 +38,7 @@
   align-items: center;
   padding: 1.5rem;
   border: 2px solid white;
-  height: 75%;
-  width: 75%;
+
 }
 
 .form-input {
@@ -56,6 +54,11 @@
   font-size: 1.25rem;
 }
 
-.card-wrapper {
-  border: 3px solid white;
+.card-wrapper{
+  display: flex;
+  width: 75%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+

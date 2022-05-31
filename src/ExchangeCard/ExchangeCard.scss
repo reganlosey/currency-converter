@@ -1,0 +1,23 @@
+@use "../sass/variables.scss" as *;
+
+.exchange-card-wrapper {
+  border: 2px solid white;
+  min-height: 50%;
+  width:75%;
+}
+
+.exchange-card {
+  padding: 1.5rem;
+  width: 65%;
+}
+
+.conversion-info {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.converted-currency {
+  text-transform: capitalize;
+}
