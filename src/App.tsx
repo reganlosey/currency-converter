@@ -9,6 +9,7 @@ const App: FC = () => {
   const [toType, setToType] = useState<string>('');
   const [amount, setAmount] = useState<number>(0);
   const [conversionInfo, setConversionInfo] = useState<IResponse>();
+  const [ratesInfo, setRatesInfo] = useState<object>();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
@@ -28,6 +29,7 @@ const App: FC = () => {
   const convertCurrency = async () => {
     const resp = await fetchConversion(fromType, toType, amount)
     setConversionInfo(resp)
+ 
   }
 
 
@@ -72,7 +74,7 @@ const App: FC = () => {
             <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>
           </form>
         </div>
-        {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : "Card goes here"}
+        {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo}/> : "Card goes here"}
       </div>
     </div>
   )

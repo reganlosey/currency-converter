@@ -1,11 +1,11 @@
 export interface IExchangeCard {
   from: string;
   to: string;
-  amount: number;
+  amount: string;
   conversionRate: number;
   convertedAmount: string;
-  conversionInfo: IResponse;
 }
+
 
 export interface IResponse {
   base_currency_code: string;
@@ -13,12 +13,12 @@ export interface IResponse {
   amount: string;
   updated_date: string;
   rates: {
-    fromType: {
+    [key: string]: {
       currency_name: string;
       rate: string;
       rate_for_amount: string
     }
   };
   status: string
-
 }
+
