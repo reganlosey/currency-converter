@@ -6,3 +6,14 @@
   padding: 1.5rem;
   width: 65%;
 }
+
+.conversion-info {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.converted-currency {
+  text-transform: capitalize;
+}
