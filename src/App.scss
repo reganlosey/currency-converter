@@ -23,7 +23,7 @@
 }
 
 .exchange-form-wrapper {
-  // border: 2px solid black;
+  border: 2px solid black;
   display: flex;
   width: 75%;
   flex-direction: column;
@@ -33,16 +33,17 @@
 
 .exchange-form {
   display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
   align-items: center;
-  padding: 1.5rem;
-  border: 2px solid white;
-
+  padding: 1.5rem 0;
+  width: 100%;
 }
 
 .form-input {
-  width: 30%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items:center;
 }
 
 .convert-btn {
@@ -54,7 +55,7 @@
   font-size: 1.25rem;
 }
 
-.card-wrapper{
+.card-wrapper {
   display: flex;
   width: 75%;
   flex-direction: column;
@@ -62,3 +63,11 @@
   align-items: center;
 }
 
+.form-text {
+  font-size: 1.5rem;
+}
+
+.currency-select {
+  width: min-content;
+  border: none;
+}
