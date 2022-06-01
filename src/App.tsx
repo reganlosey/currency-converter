@@ -1,5 +1,5 @@
-import { FC, useState, ChangeEvent, MouseEvent } from 'react';
-import { IExchangeCard, IResponse, IRespArray } from './Interfaces';
+import { FC, useState, useEffect, ChangeEvent, MouseEvent } from 'react';
+import { IExchangeCard, IResponse } from './Interfaces';
 import ExchangeCard from './ExchangeCard/ExchangeCard';
 import { fetchAvailableCurrencies, fetchConversion } from './apiCalls';
 import './App.scss';
@@ -26,20 +26,22 @@ const App: FC = () => {
     }
   }
 
+  useEffect(() => {
+    getCurrencyList()
+  }, [])
+
   const getData = async () => {
     const currencyDataResp = await fetchConversion(fromType, toType, amount)
     setConversionInfo(currencyDataResp)
+  }
+
+  const getCurrencyList = async () => {
     const availCurrenciesResp = await fetchAvailableCurrencies()
     const currencies = Object.keys(availCurrenciesResp.currencies)
-    setCurrencyList(currencies)
-
-
-
-
-
-
-
-
+    const sorted = currencies.sort((a, b) => {
+      return a > b ? 1 : -1
+    })
+    setCurrencyList(sorted)
   }
 
 
@@ -54,35 +56,49 @@ const App: FC = () => {
       <div className="main">
         <div className="exchange-form-wrapper">
           <form className="exchange-form">
-            <h2 className="form-text--to">Enter the source currency</h2>
-            <input className="form-input form-input--from"
-              placeholder="(ex: USD)"
-              type="text"
-              name="fromType"
-              value={fromType}
-              onChange={(e) => handleChange(e)}
-            >
-            </input>
-            <h2 className="form-text--from">Rad, and the destination currency</h2>
-            <input className="form-input form-input--to"
-              type="text"
-              placeholder="(ex: GBP)"
-              name="toType"
-              value={toType}
-              onChange={(e) => handleChange(e)}
-            >
-            </input>
-            <h2 className="form-text--amount">Okay and the amount you'd like to convert?</h2>
-            <input className="form-input form-input--amount"
-              type="number"
-              placeholder="(ex:100)"
-              name="amount"
-              value={amount}
-              onChange={(e) => handleChange(e)}
-            >
-            </input>
-            <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>
+            <div className="form-input form-input--amount">
+
+              <h2 className="form-text form-text--amount">Amount to convert</h2>
+              <label
+                htmlFor="currency-amount-input">
+                <input className="form-input form-input--amount"
+                  type="number"
+                  placeholder="(ex:100)"
+                  name="amount"
+                  minLength={3}
+                  maxLength={3}
+                  value={amount}
+                  onChange={(e) => handleChange(e)}>
+                </input>
+              </label>
+            </div>
+            <div className="form-input form-input--to">
+
+              <h2 className="form-text form-text--to">From:</h2>
+              <label
+                htmlFor="source-currency-select">
+                <select
+                  className="currency-select currency-select--source"
+                  onChange={(e) => setFromType(e.target.value)}>
+                  <option value="Select A Currency Type">Select Currency Code</option>
+                  {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
+                </select>
+              </label>
+            </div>
+            <div className="form-input form-input--from">
+              <h2 className="form-text form-text--from">To:</h2>
+              <label
+                htmlFor="destination-currency-select">
+                <select
+                  className="currency-select currency-select--dest"
+                  onChange={(e) => setToType(e.target.value)}>
+                  <option value="Select A Currency Type">Select Currency Code</option>
+                  {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
+                </select>
+              </label>
+            </div>
           </form>
+          <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>
         </div>
         <div className="exchange-card-wrapper">
           {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : null}

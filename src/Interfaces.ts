@@ -21,9 +21,3 @@ export interface IResponse {
   };
   status: string
 }
-
-export interface IRespArray {
-  currencies: string[];
-  status: string
-}
-
