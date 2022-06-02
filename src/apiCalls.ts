@@ -35,7 +35,6 @@ export const fetchAvailableCurrencies = async () => {
   if (!resp.ok) {
     throw new Error(`Error: ${resp.statusText}`)
   }
-  console.log(respJson)
   return respJson
 
 
