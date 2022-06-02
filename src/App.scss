@@ -43,7 +43,14 @@
 .form-input {
   display: flex;
   flex-flow: column nowrap;
-  align-items:center;
+  align-items: center;
+}
+
+.amount-input {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  border: none;
+  width: 40%;
 }
 
 .convert-btn {
@@ -64,10 +71,11 @@
 }
 
 .form-text {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .currency-select {
   width: min-content;
   border: none;
+  background-color: white;
 }

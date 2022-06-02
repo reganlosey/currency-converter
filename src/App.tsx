@@ -7,7 +7,7 @@ import './App.scss';
 const App: FC = () => {
   const [fromType, setFromType] = useState<string>('');
   const [toType, setToType] = useState<string>('');
-  const [amount, setAmount] = useState<number>(0);
+  const [amount, setAmount] = useState<number | undefined>(undefined);
   const [conversionInfo, setConversionInfo] = useState<IResponse>();
   const [currencyList, setCurrencyList] = useState<string[]>();
 
@@ -21,7 +21,7 @@ const App: FC = () => {
         setToType(value.toUpperCase())
         break;
       case "amount":
-        setAmount(Number(value))
+        setAmount(parseInt(value))
         break;
     }
   }
@@ -57,45 +57,37 @@ const App: FC = () => {
         <div className="exchange-form-wrapper">
           <form className="exchange-form">
             <div className="form-input form-input--amount">
-
-              <h2 className="form-text form-text--amount">Amount to convert</h2>
-              <label
-                htmlFor="currency-amount-input">
-                <input className="form-input form-input--amount"
-                  type="number"
-                  placeholder="(ex:100)"
-                  name="amount"
-                  minLength={3}
-                  maxLength={3}
-                  value={amount}
-                  onChange={(e) => handleChange(e)}>
-                </input>
-              </label>
+              <h2 className="form-text form-text--amount">Amount</h2>
+              <label htmlFor="currency-amount-input"></label>
+              <input className="amount-input"
+                type="number"
+                placeholder="(ex:100)"
+                name="amount"
+                minLength={3}
+                maxLength={3}
+                value={amount}
+                onChange={(e) => handleChange(e)}>
+              </input>
             </div>
             <div className="form-input form-input--to">
-
               <h2 className="form-text form-text--to">From:</h2>
-              <label
-                htmlFor="source-currency-select">
-                <select
-                  className="currency-select currency-select--source"
-                  onChange={(e) => setFromType(e.target.value)}>
-                  <option value="Select A Currency Type">Select Currency Code</option>
-                  {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
-                </select>
-              </label>
+              <label htmlFor="source-currency-select"></label>
+              <select
+                className="currency-select currency-select--source"
+                onChange={(e) => setFromType(e.target.value)}>
+                <option value="Select A Currency Type">Currency Code</option>
+                {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
+              </select>
             </div>
             <div className="form-input form-input--from">
               <h2 className="form-text form-text--from">To:</h2>
-              <label
-                htmlFor="destination-currency-select">
-                <select
-                  className="currency-select currency-select--dest"
-                  onChange={(e) => setToType(e.target.value)}>
-                  <option value="Select A Currency Type">Select Currency Code</option>
-                  {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
-                </select>
-              </label>
+              <label htmlFor="destination-currency-select"></label>
+              <select
+                className="currency-select currency-select--dest"
+                onChange={(e) => setToType(e.target.value)}>
+                <option value="Select A Currency Type">Currency Code</option>
+                {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
+              </select>
             </div>
           </form>
           <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>

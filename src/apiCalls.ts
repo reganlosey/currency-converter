@@ -1,6 +1,6 @@
 import { IResponse} from './Interfaces';
 const apiKey = process.env.REACT_APP_API_KEY;
-export const fetchConversion = async (from: string, to: string, amount: number) => {
+export const fetchConversion = async (from: string, to: string, amount: number | undefined) => {
   const url = `https://currency-converter5.p.rapidapi.com/currency/convert?format=json&from=${from}&to=${to}&amount=${amount}`
 
   const options = {
