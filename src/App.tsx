@@ -21,7 +21,7 @@ const App: FC = () => {
         setToType(value.toUpperCase())
         break;
       case "amount":
-        setAmount(parseInt(value))
+        setAmount(Number(value))
         break;
     }
   }
@@ -61,10 +61,9 @@ const App: FC = () => {
               <label htmlFor="currency-amount-input"></label>
               <input className="amount-input"
                 type="number"
-                placeholder="(ex:100)"
+                placeholder="1.00"
                 name="amount"
-                minLength={3}
-                maxLength={3}
+                step="any"
                 value={amount}
                 onChange={(e) => handleChange(e)}>
               </input>
@@ -90,8 +89,8 @@ const App: FC = () => {
               </select>
             </div>
           </form>
-          <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>
         </div>
+        <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>
         <div className="exchange-card-wrapper">
           {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : null}
         </div>
