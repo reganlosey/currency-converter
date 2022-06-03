@@ -5,18 +5,20 @@
   font-family: $main-font;
   font-weight: $main-font-weight;
   height: 100%;
-  background-color: rgb(162, 205, 255);
+  background-color: #122156;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .heading {
+  color: white;
   font-size: 3em;
 }
 
 .main {
-  border: 2px solid black;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
   height: 85%;
   display: flex;
   width: 80%;
@@ -26,7 +28,10 @@
 }
 
 .exchange-form-wrapper {
-  border: 2px solid black;
+  border: 2px solid #ffffff;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
   display: flex;
   width: 75%;
   min-height: 25%;
@@ -48,23 +53,27 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  font-size: 1.15rem;
+  font-size: 1.25rem;
+  border-radius: 5px;
 }
 
 .amount-input {
   -webkit-appearance: none;
   -moz-appearance: textfield;
-  border: none;
-  outline: 2px solid rgb(0, 182, 0);
+  border: 2px solid black;
+  border-radius: 5px;
+  &:focus {
+    outline: 2px solid #00b600;
+  }
   &:invalid {
-    outline: 2px solid red;
+    outline: 2px solid #ff0000;
   }
 }
 
 .convert-btn {
   padding: 0.15rem 1.5rem;
   border: 1px solid black;
-  background: white;
+  background: #ffffff;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1.5rem;
@@ -72,7 +81,7 @@
     transform: translateY(1px);
   }
   &:disabled {
-    background: none;
+    background: #acacac;
     color: grey;
     cursor: not-allowed;
   }
@@ -93,7 +102,8 @@
 
 .currency-select {
   width: min-content;
-  border: none;
+  border: 2px solid black;
+  border-radius: 5px;
   background-color: white;
   padding: 0.25rem;
 }
