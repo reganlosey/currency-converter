@@ -83,7 +83,7 @@ const App: FC = () => {
         </div>
         <button className="convert-btn" disabled={!amount ? true : false} onClick={(e) => handleClick(e)}>Convert</button>
         <div className="exchange-card-wrapper">
-          {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : <h2 style={{ textAlign: 'center' }}>Please complete the form above to view conversion data</h2>}
+          {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : null}
         </div>
       </div>
     </div >
