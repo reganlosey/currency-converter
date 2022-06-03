@@ -11,21 +11,6 @@ const App: FC = () => {
   const [conversionInfo, setConversionInfo] = useState<IResponse>();
   const [currencyList, setCurrencyList] = useState<string[]>();
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    switch (name) {
-      case 'fromType':
-        setFromType(value.toUpperCase())
-        break;
-      case 'toType':
-        setToType(value.toUpperCase())
-        break;
-      case "amount":
-        setAmount(Number(value))
-        break;
-    }
-  }
-
   useEffect(() => {
     getCurrencyList()
   }, [])
@@ -50,56 +35,53 @@ const App: FC = () => {
     getData()
   }
 
+  const handleFocus = (e: ChangeEvent<HTMLInputElement>) => {
+    e.target.select()
+  }
+
 
   return (
     <div className="App">
+      <h1 className="heading">Currency Converter</h1>
       <div className="main">
         <div className="exchange-form-wrapper">
           <form className="exchange-form">
             <div className="form-input form-input--amount">
-
-              <h2 className="form-text form-text--amount">Amount to convert</h2>
-              <label
-                htmlFor="currency-amount-input">
-                <input className="form-input form-input--amount"
-                  type="number"
-                  placeholder="(ex:100)"
-                  name="amount"
-                  minLength={3}
-                  maxLength={3}
-                  value={amount}
-                  onChange={(e) => handleChange(e)}>
-                </input>
-              </label>
+              <h2 className="form-text form-text--amount">Amount</h2>
+              <label htmlFor="currency-amount-input"></label>
+              <input className="amount-input"
+                type="number"
+                placeholder="1.00"
+                name="amount"
+                value={amount === 0 ? '' : amount}
+                onChange={(e) => setAmount(Number(e.target.value))}
+                onFocus={(e) => handleFocus(e)}
+              >
+              </input>
             </div>
             <div className="form-input form-input--to">
-
               <h2 className="form-text form-text--to">From:</h2>
-              <label
-                htmlFor="source-currency-select">
-                <select
-                  className="currency-select currency-select--source"
-                  onChange={(e) => setFromType(e.target.value)}>
-                  <option value="Select A Currency Type">Select Currency Code</option>
-                  {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
-                </select>
-              </label>
+              <label htmlFor="source-currency-select"></label>
+              <select
+                className="currency-select currency-select--source"
+                onChange={(e) => setFromType(e.target.value)}>
+                <option value="Select A Currency Type">Currency Code</option>
+                {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
+              </select>
             </div>
             <div className="form-input form-input--from">
               <h2 className="form-text form-text--from">To:</h2>
-              <label
-                htmlFor="destination-currency-select">
-                <select
-                  className="currency-select currency-select--dest"
-                  onChange={(e) => setToType(e.target.value)}>
-                  <option value="Select A Currency Type">Select Currency Code</option>
-                  {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
-                </select>
-              </label>
+              <label htmlFor="destination-currency-select"></label>
+              <select
+                className="currency-select currency-select--dest"
+                onChange={(e) => setToType(e.target.value)}>
+                <option value="Select A Currency Type">Currency Code</option>
+                {currencyList?.map((option, index) => <option key={index} value={option}>{option}</option>)}
+              </select>
             </div>
           </form>
-          <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>
         </div>
+        <button className="convert-btn" disabled={!amount ? true : false} onClick={(e) => handleClick(e)}>Convert</button>
         <div className="exchange-card-wrapper">
           {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : null}
         </div>

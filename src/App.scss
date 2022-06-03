@@ -5,20 +5,23 @@
   font-family: $main-font;
   font-weight: $main-font-weight;
   height: 100%;
-  background-color: tomato;
+  background-color: rgb(162, 205, 255);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.heading {
+  font-size: 3em;
 }
 
 .main {
   border: 2px solid black;
   height: 85%;
   display: flex;
-  width: 75%;
+  width: 80%;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
 
@@ -26,6 +29,7 @@
   border: 2px solid black;
   display: flex;
   width: 75%;
+  min-height: 25%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -33,7 +37,7 @@
 
 .exchange-form {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
   padding: 1.5rem 0;
@@ -43,16 +47,35 @@
 .form-input {
   display: flex;
   flex-flow: column nowrap;
-  align-items:center;
+  align-items: center;
+  font-size: 1.15rem;
+}
+
+.amount-input {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  border: none;
+  outline: 2px solid rgb(0, 182, 0);
+  &:invalid {
+    outline: 2px solid red;
+  }
 }
 
 .convert-btn {
-  padding: 0.5rem 1.5rem;
+  padding: 0.15rem 1.5rem;
   border: 1px solid black;
   background: white;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  &:active {
+    transform: translateY(1px);
+  }
+  &:disabled {
+    background: none;
+    color: grey;
+    cursor: not-allowed;
+  }
 }
 
 .card-wrapper {
@@ -65,9 +88,12 @@
 
 .form-text {
   font-size: 1.5rem;
+  font-weight: $main-font-weight;
 }
 
 .currency-select {
   width: min-content;
   border: none;
+  background-color: white;
+  padding: 0.25rem;
 }
