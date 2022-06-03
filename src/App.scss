@@ -8,13 +8,16 @@
   background-color: rgb(162, 205, 255);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+}
+
+.heading {
+  font-size: 3em;
 }
 
 .main {
   border: 2px solid black;
-  height: 65%;
+  height: 85%;
   display: flex;
   width: 80%;
   flex-direction: column;
@@ -26,7 +29,7 @@
   border: 2px solid black;
   display: flex;
   width: 75%;
-  height: 25%;
+  min-height: 25%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -34,7 +37,7 @@
 
 .exchange-form {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
   align-items: center;
   padding: 1.5rem 0;
@@ -68,7 +71,7 @@
   &:active {
     transform: translateY(1px);
   }
-  &:disabled{
+  &:disabled {
     background: none;
     color: grey;
     cursor: not-allowed;

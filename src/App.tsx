@@ -42,7 +42,7 @@ const App: FC = () => {
 
   return (
     <div className="App">
-      <h1>Currency Converter</h1>
+      <h1 className="heading">Currency Converter</h1>
       <div className="main">
         <div className="exchange-form-wrapper">
           <form className="exchange-form">
