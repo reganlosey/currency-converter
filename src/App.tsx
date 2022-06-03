@@ -7,24 +7,9 @@ import './App.scss';
 const App: FC = () => {
   const [fromType, setFromType] = useState<string>('');
   const [toType, setToType] = useState<string>('');
-  const [amount, setAmount] = useState<number | undefined>(undefined);
+  const [amount, setAmount] = useState<number>(0);
   const [conversionInfo, setConversionInfo] = useState<IResponse>();
   const [currencyList, setCurrencyList] = useState<string[]>();
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, name } = e.target;
-    switch (name) {
-      case 'fromType':
-        setFromType(value.toUpperCase())
-        break;
-      case 'toType':
-        setToType(value.toUpperCase())
-        break;
-      case "amount":
-        setAmount(Number(value))
-        break;
-    }
-  }
 
   useEffect(() => {
     getCurrencyList()
@@ -50,9 +35,14 @@ const App: FC = () => {
     getData()
   }
 
+  const handleFocus = (e: ChangeEvent<HTMLInputElement>) => {
+    e.target.select()
+  }
+
 
   return (
     <div className="App">
+      <h1>Currency Converter</h1>
       <div className="main">
         <div className="exchange-form-wrapper">
           <form className="exchange-form">
@@ -63,9 +53,10 @@ const App: FC = () => {
                 type="number"
                 placeholder="1.00"
                 name="amount"
-                step="any"
-                value={amount}
-                onChange={(e) => handleChange(e)}>
+                value={amount === 0 ? '' : amount}
+                onChange={(e) => setAmount(Number(e.target.value))}
+                onFocus={(e) => handleFocus(e)}
+              >
               </input>
             </div>
             <div className="form-input form-input--to">
@@ -90,7 +81,7 @@ const App: FC = () => {
             </div>
           </form>
         </div>
-        <button className="convert-btn" onClick={(e) => handleClick(e)}>Convert</button>
+        <button className="convert-btn" disabled={!amount ? true : false} onClick={(e) => handleClick(e)}>Convert</button>
         <div className="exchange-card-wrapper">
           {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : null}
         </div>

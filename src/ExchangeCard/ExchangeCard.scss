@@ -3,7 +3,7 @@
 .exchange-card-wrapper {
   border: 2px solid white;
   min-height: 40%;
-  width:75%;
+  min-width: 75%;
 }
 
 .exchange-card {
@@ -15,8 +15,10 @@
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
+  font-size: 1.5rem;
 }
 
 .converted-currency {
   text-transform: capitalize;
+  font-weight: 400;
 }

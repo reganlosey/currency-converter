@@ -52,7 +52,10 @@
   -webkit-appearance: none;
   -moz-appearance: textfield;
   border: none;
-  outline: none;
+  outline: 2px solid rgb(0, 182, 0);
+  &:invalid {
+    outline: 2px solid red;
+  }
 }
 
 .convert-btn {
@@ -64,6 +67,11 @@
   font-size: 1.5rem;
   &:active {
     transform: translateY(1px);
+  }
+  &:disabled{
+    background: none;
+    color: grey;
+    cursor: not-allowed;
   }
 }
 
@@ -77,6 +85,7 @@
 
 .form-text {
   font-size: 1.5rem;
+  font-weight: $main-font-weight;
 }
 
 .currency-select {

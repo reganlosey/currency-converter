@@ -1,5 +1,5 @@
-import { FC, useState, useEffect } from 'react';
-import { IExchangeCard, IResponse } from '../Interfaces';
+import { useState, useEffect } from 'react';
+import { IResponse } from '../Interfaces';
 import './ExchangeCard.scss';
 
 interface Props {
@@ -34,8 +34,8 @@ const ExchangeCard = ({ conversionInfo }: Props) => {
   return (
     <div className="exchange-card">
       <div className="conversion-info">
-        <h2>{parseFloat(baseAmount).toFixed(2)} in <span className="converted-currency">{baseCurrencyCode}({baseCurrencyName})</span> is equivalent to {parseFloat(convertedAmount).toFixed(2)} in <span className="converted-currency">{destCurrencyCode}({destCurrencyName})</span></h2>
-        <h2>The conversion rate from {baseCurrencyCode} to {destCurrencyCode} is {conversionRate}</h2>
+        <p>{parseFloat(baseAmount).toFixed(2)} in <span className="converted-currency">{baseCurrencyCode}({baseCurrencyName})</span> is equivalent to {parseFloat(convertedAmount).toFixed(2)} in <span className="converted-currency">{destCurrencyCode}({destCurrencyName})</span></p>
+        <p>The conversion rate from {baseCurrencyCode} to {destCurrencyCode} is {conversionRate}</p>
       </div>
     </div >
 
