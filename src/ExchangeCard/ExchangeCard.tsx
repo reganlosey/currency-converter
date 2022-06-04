@@ -33,8 +33,14 @@ const ExchangeCard = ({ conversionInfo }: Props) => {
 
   return (
     <div className="exchange-card">
-      <p>{parseFloat(baseAmount).toFixed(2)} in <span className="converted-currency">{baseCurrencyCode}({baseCurrencyName})</span> is equivalent to {parseFloat(convertedAmount).toFixed(2)} in <span className="converted-currency">{destCurrencyCode}({destCurrencyName})</span></p>
-      <p>The conversion rate from {baseCurrencyCode} to {destCurrencyCode} is {conversionRate}</p>
+      <div className="converted-text converted-text--base">
+        <p>{parseFloat(baseAmount).toFixed(2)} in {baseCurrencyCode} ({baseCurrencyName})</p>
+      </div>
+      <p className="converted-text converted-text--equivalent">is equivalent to</p>
+      <div className="converted-text converted-text--dest">
+        <p>{parseFloat(convertedAmount).toFixed(2)} in {destCurrencyCode} ({destCurrencyName})</p>
+      </div>
+      <p className="converted-text converted-text--rate">The conversion rate from {baseCurrencyCode} to {destCurrencyCode} is {conversionRate}</p>
     </div >
 
   )

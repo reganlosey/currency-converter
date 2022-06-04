@@ -86,7 +86,7 @@ const App: FC = () => {
           {conversionInfo ? <ExchangeCard conversionInfo={conversionInfo} /> : null}
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
