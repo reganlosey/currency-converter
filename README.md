@@ -1,3 +1,3 @@
-## [Simple Currency Converter](https://cash-converter.netlify.app/)
+***Still in progress***
 
 Quick little app to teach myself the fundamentals of Typescript
