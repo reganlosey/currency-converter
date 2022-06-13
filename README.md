@@ -13,7 +13,7 @@ This application provides a quick and simple currency conversion for over 160 di
 <img src="https://user-images.githubusercontent.com/82983696/172951409-5e4b8955-d419-413f-b7ef-8f35fcb437c6.gif" width="800" />
 
 ### Description:
-This was super fun quick project I used as an opportunity to teach myself some Typescript. I initially thought that having to define types meant using Typescript would be more work than regular Javascript but I found that I actually completed the project a lot faster than I expected because I spent less time debugging and chasing down stray errors.
+This was a super fun quick project I used as an opportunity to teach myself some Typescript. I initially thought that having to define types meant using Typescript would be more work than regular Javascript but I found that I actually completed the project a lot faster than I expected because I spent less time debugging and chasing down stray errors.
 Although I didn't dive too terribly deep into its capabilities, I'm excited to start using Typescript in place of Javascript when I can.
 
 ### Resources:
